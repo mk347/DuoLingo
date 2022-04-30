@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { Text, View, Image } from 'react-native';
+import styles from './App.styles';
 
-export default function App() {
+import ImageOption from './src/components/ImageOption';
+
+// All consumers that are descendants of a Provider will re-render whenever the Provider’s value prop changes.
+const App = () => {
+
   return (
-    <View style={styles.container}>
-      <Text>Hello World</Text>
-      <StatusBar style="auto" />
+    <View style={styles.root}>
+      <Text style={styles.title}>Which of these is the "glass"?</Text>
+
+      <View style={styles.optionsContainer}>
+        <ImageOption />
+      </View>
+
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
