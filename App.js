@@ -1,19 +1,44 @@
-import React from 'react';
-import { Text, View, Image } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, Alert } from 'react-native';
 import styles from './App.styles';
-
+import questions from './assets/data/imageMulatipleChoiceQuestions';
 import ImageOption from './src/components/ImageOption';
+import Button from './src/components/Button';
+import ImageMultipleChoiceQuestion from './src/components/ImageMultipleChoiceQuestion';
 
-// All consumers that are descendants of a Provider will re-render whenever the Provider’s value prop changes.
 const App = () => {
 
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(
+    questions[currentQuestionIndex]
+  );
+  
+  useEffect(() => {
+    if (currentQuestionIndex >= questions.length) {
+      Alert.alert("You Win.");
+      setCurrentQuestionIndex(0);
+    } else {
+      setCurrentQuestion(questions[currentQuestionIndex])
+    }
+  }, [currentQuestionIndex]);
+
+  const onCorrect = () => {
+    setCurrentQuestionIndex(currentQuestionIndex + 1)
+  }
+
+  const onWrong = () => {
+    Alert.alert('Wrong');
+  }
+  
+  
   return (
     <View style={styles.root}>
-      <Text style={styles.title}>Which of these is the "glass"?</Text>
 
-      <View style={styles.optionsContainer}>
-        <ImageOption />
-      </View>
+      <ImageMultipleChoiceQuestion 
+        question={currentQuestion} 
+        onCorrect={onCorrect}
+        onWrong={onWrong}
+      />
 
     </View>
   );

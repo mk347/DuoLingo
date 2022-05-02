@@ -17,10 +17,18 @@ const styles = StyleSheet.create({
   optionImage: {
     width: '100%',
     flex: 1,
-
   },
   optionText: {
-    color: '#0c0c0c'
+    color: '#0c0c0c',
+    fontWeight: 'bold'
+  },
+  selectedText: {
+    color: '#40BEF7',
+    fontWeight: 'bold'
+  },
+  selectedContainer: {
+    backgroundColor: '#DDF4FE',
+    borderColor: '#81D5FE'
   }
 })
 
