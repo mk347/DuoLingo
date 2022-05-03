@@ -29,6 +29,9 @@ const styles = StyleSheet.create({
   selectedContainer: {
     backgroundColor: '#DDF4FE',
     borderColor: '#81D5FE'
+  },
+  isWrong: {
+    backgroundColor: '#ff4c4c'
   }
 })
 
