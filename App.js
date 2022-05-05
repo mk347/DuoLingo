@@ -100,7 +100,7 @@ const App = () => {
 
       <Header progress={currentQuestionIndex / questions.length} lives={lives} />
 
-      {/* {currentQuestion.type === "IMAGE_MULTIPLE_CHOICE" && (
+      {currentQuestion.type === "IMAGE_MULTIPLE_CHOICE" && (
         <ImageMultipleChoiceQuestion 
           question={currentQuestion} 
           onCorrect={onCorrect}
@@ -114,15 +114,15 @@ const App = () => {
           onCorrect={onCorrect}
           onWrong={onWrong}      
         />
-      ) : null} */}
+      ) : null}
 
-      {currentQuestion.type === "FILL_IN_THE_BLANK" ? (
+      {currentQuestion.type === "FILL_IN_THE_BLANK" && (
         <FillInTheBlank 
           question={currentQuestion} 
           onCorrect={onCorrect}      
           onWrong={onWrong}
         />
-      ) : null}
+      )}
 
     </View>
   );

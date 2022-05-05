@@ -13,10 +13,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     alignSelf: 'stretch'
   },
-  wordPuzzleContainer: {
-    flexDirection: 'row',
-    width: '100%',
-  },
+
   wordContainer: {
     display: 'flex',
     flexDirection: 'row',
@@ -27,8 +24,23 @@ const styles = StyleSheet.create({
   sitting: {
     width: '100%',
     aspectRatio: 1/1,
-  }
-
+  },
+  
+  wordPuzzleContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row'
+  },  
+  wordPuzzleBlank: {
+    width: 100,
+    height: 70,
+    borderBottomColor: 'gray',
+    borderBottomWidth: 2,
+    marginLeft: 10
+  },
+  wordPuzzleText: {
+    fontSize: 20
+  },
 });
 
 export default styles;

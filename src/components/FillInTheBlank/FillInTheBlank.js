@@ -1,12 +1,25 @@
 import { View, Text, Image } from 'react-native'
-import React from 'react';
+import React, { useState } from 'react';
 import BlankOption from '../BlankOption/BlankOption';
-import WordPuzzle from '../WordPuzzle/WordPuzzle';
 import propTypes from 'prop-types';
 import styles from './styles';
 import sitting from '../../../assets/images/sitting.png'
+import Button from '../Button';
 
-const FillInTheBlank = ({ question }) => {
+const FillInTheBlank = ({ question, onCorrect, onWrong }) => {
+
+  const [selected, setSelected] = useState(false);
+
+  const onButtonPress = () => {
+    if (selected === question.correct) {
+      // Move to next question
+      onCorrect();
+    
+    } else {
+      onWrong();
+    }
+  }
+
   return (
 
       <View style={styles.root}>
@@ -20,12 +33,21 @@ const FillInTheBlank = ({ question }) => {
         />
 
         <View style={styles.wordPuzzleContainer}>
-          {question.parts.map((part, index) => (
-            <WordPuzzle 
-              text={part.text}
-              key={index}
+          <Text style={styles.wordPuzzleText}>{question.sentence}</Text>
+          <View style={styles.wordPuzzleBlank}>
+            
+            {selected && (
+            <BlankOption 
+              text={selected}
+              onPress={() => setSelected(selected)} 
             />
-          ))}
+            )}
+          
+
+          </View>
+        </View>
+
+        <View style={styles.wordBlank}>
         </View>
       
         <View style={styles.wordContainer}>
@@ -33,9 +55,18 @@ const FillInTheBlank = ({ question }) => {
             <BlankOption 
               text={option}
               key={index}
+              onPress={() => setSelected(option)}
+              isSelected={selected === option}
             />
           ))}
         </View>
+
+        <Button 
+          text="Check"
+          onPress={onButtonPress}
+          disabled={!selected}
+        />
+
         
       </View>
 
