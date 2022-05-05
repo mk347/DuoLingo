@@ -50,7 +50,7 @@ const OpenEndedQuestion = ({ question, onCorrect, onWrong }) => {
       <Button 
         text="Check"
         onPress={onButtonPress}
-        disabled={false}
+        disabled={!input}
       />
 
     </>
